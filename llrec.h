@@ -83,7 +83,24 @@ Node* llfilter(Node* head, Comp pred)
     //*********************************************
     // Provide your implementation below
     //*********************************************
+    
+    //list is empty
+    if(head == nullptr){
+        return nullptr;
+    }
 
+    Node* filtered = llfilter(head->next, pred);
+
+    //current node
+    if(pred(head->val)){
+        //delete node and return the list without
+        delete head;
+        return filtered;
+    } else {
+        //keep list as is
+        head->next = filtered;
+        return head;
+    }
 
 }
 

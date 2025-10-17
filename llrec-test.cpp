@@ -66,8 +66,13 @@ void dealloc(Node* head)
 //   Add any helper functions or
 //   function object struct declarations
 // -----------------------------------------------
+bool isOdd(int x){
+    return x % 2 != 0;
+}
 
-
+bool isEven(int x){
+    return x % 2 == 0;
+}
 
 
 
@@ -87,8 +92,21 @@ int main(int argc, char* argv[])
 
     // Test out your linked list code
 
+    //remove odds and keep evens
+    Node* h = readList(argv[1]);
+    std::cout << "remove odds -> ";
+    h = llfilter(h, isOdd);
+    print(h);
+    dealloc(h);
 
+    //remove evens and keep odds
+    h = readList(argv[1]);
+    std::cout << "remove evens -> ";
+    h = llfilter(h, isEven);
+    print(h);
+    dealloc(h);
 
+    dealloc(h);
     
     return 0;
 
